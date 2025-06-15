@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mangal Turkish Restaurant - Authentic Turkish Cuisine in Al Wukair, Qatar</title>
+    <meta name="description" content="Experience the true taste of Turkey at Mangal Restaurant in Al Wukair, Qatar. We serve authentic Turkish kebabs, fresh mezzes, and traditional dishes in a warm, hospitable environment.">
+    <meta name="keywords" content="Turkish restaurant in Al Wukair, authentic Turkish food Qatar, Mangal Restaurant, Turkish cuisine Qatar, kebabs Al Wukair">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter, Cinzel Decorative, and Tajawal for Arabic -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Cinzel+Decorative:wght@700&family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        /* Default styles */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fdfaf6;
+        }
+
+        h1, h2, h3, .font-display {
+            font-family: 'Cinzel Decorative', cursive;
+        }
+        
+        /* Styles for Arabic language font */
+        body.lang-ar {
+            font-family: 'Tajawal', sans-serif;
+        }
+        body.lang-ar h1, body.lang-ar h2, body.lang-ar h3, body.lang-ar .font-display {
+            font-family: 'Tajawal', sans-serif;
+            font-weight: 700;
+        }
+       
+        /* Hero slideshow styles */
+        .hero-slide { display: none; transition: opacity 1s ease-in-out; }
+        .hero-slide.active { display: block; }
+
+        /* Animation for sections */
+        .fade-in-section { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+        .fade-in-section.is-visible { opacity: 1; transform: translateY(0); }
+
+        /* CTA button styles */
+        .cta-button { transition: all 0.3s ease; }
+        .cta-button:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.15); }
+        
+        /* Background pattern */
+        .turkish-pattern {
+            background-image: url('https://www.transparenttextures.com/patterns/cubes.png');
+            background-color: #e6dfd5;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <!-- Header -->
+    <header id="header" class="bg-white/80 backdrop-blur-lg shadow-md sticky top-0 z-50 transition-all duration-300">
+        <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <!-- Left Side: Logo & Flag -->
+            <div class="flex-shrink-0 flex items-center">
+                <a href="#" class="text-3xl font-bold text-red-800 font-display">Mangal</a>
+                <img id="turkish-flag" src="https://upload.wikimedia.org/wikipedia/commons/b/b4/Flag_of_Turkey.svg" alt="Turkish Flag" class="h-6 ml-3">
+            </div>
+
+            <!-- Right Side Wrapper: Nav + Buttons -->
+            <div class="hidden md:flex items-center">
+                 <!-- Language Switcher + Nav Links -->
+                <nav class="flex items-center">
+                    <div class="relative" id="language-switcher-desktop">
+                        <button class="flex items-center text-gray-600 hover:text-red-700 transition">
+                            <i class="fas fa-globe mr-1"></i>
+                            <span id="current-lang-desktop">EN</span>
+                            <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                        </button>
+                        <div id="language-dropdown-desktop" class="absolute left-0 mt-2 w-28 bg-white rounded-md shadow-lg py-1 hidden z-10">
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-red-50" onclick="changeLanguage('en')">English</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-red-50" onclick="changeLanguage('ar')">العربية</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-red-50" onclick="changeLanguage('tr')">Türkçe</a>
+                        </div>
+                    </div>
+                    <div class="main-nav-links flex items-center space-x-8 ml-8">
+                        <a href="#hero" class="text-gray-600 hover:text-red-700 transition" data-translate-key="nav_home">Home</a>
+                        <a href="#story" class="text-gray-600 hover:text-red-700 transition" data-translate-key="nav_story">Our Story</a>
+                        <a href="#menu" class="text-gray-600 hover:text-red-700 transition" data-translate-key="nav_menu">Menu</a>
+                        <a href="#contact" class="text-gray-600 hover:text-red-700 transition" data-translate-key="nav_contact">Contact</a>
+                    </div>
+                </nav>
+                 <!-- Action Buttons -->
+                <div class="flex items-center ml-8 space-x-4">
+                    <a href="#order" class="cta-button flex items-center bg-amber-500 text-white px-5 py-2 rounded-full font-bold shadow-lg hover:bg-amber-600">
+                        <i class="fas fa-shopping-bag mr-2"></i> <span data-translate-key="nav_order">Order Online</span>
+                    </a>
+                    <a href="#contact" class="cta-button flex items-center bg-red-700 text-white px-5 py-2 rounded-full font-bold shadow-lg hover:bg-red-800">
+                        <i class="fas fa-calendar-alt mr-2"></i> <span data-translate-key="nav_book">Book a Table</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="md:hidden text-2xl text-gray-700">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white/95 backdrop-blur-lg">
+            <div class="px-6 py-3 border-b">
+                 <div class="relative" id="language-switcher-mobile">
+                    <button class="w-full flex justify-between items-center text-gray-600 hover:text-red-700 transition">
+                        <div class="flex items-center">
+                            <i class="fas fa-globe mr-1"></i> <span data-translate-key="nav_language">Language</span>
+                        </div>
+                        <span id="current-lang-mobile">EN</span>
+                    </button>
+                    <div id="language-dropdown-mobile" class="mt-2 w-full bg-gray-50 rounded-md shadow-lg py-1 hidden">
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-red-100" onclick="changeLanguage('en')">English</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-red-100" onclick="changeLanguage('ar')">العربية</a>
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-red-100" onclick="changeLanguage('tr')">Türkçe</a>
+                    </div>
+                </div>
+            </div>
+            <a href="#hero" class="block py-3 px-6 text-gray-700 hover:bg-red-50" data-translate-key="nav_home">Home</a>
+            <a href="#story" class="block py-3 px-6 text-gray-700 hover:bg-red-50" data-translate-key="nav_story">Our Story</a>
+            <a href="#menu" class="block py-3 px-6 text-gray-700 hover:bg-red-50" data-translate-key="nav_menu">Menu</a>
+            <a href="#contact" class="block py-3 px-6 text-gray-700 hover:bg-red-50" data-translate-key="nav_contact">Contact</a>
+            <div class="p-4 border-t mt-2 space-y-3">
+               <a href="#order" class="cta-button w-full flex justify-center items-center bg-amber-500 text-white px-5 py-3 rounded-full font-bold shadow-lg hover:bg-amber-600">
+                    <i class="fas fa-shopping-bag mr-2"></i> <span data-translate-key="nav_order">Order Online</span>
+                </a>
+                 <a href="#contact" class="cta-button w-full flex justify-center items-center bg-red-700 text-white px-5 py-3 rounded-full font-bold shadow-lg hover:bg-red-800">
+                    <i class="fas fa-calendar-alt mr-2"></i> <span data-translate-key="nav_book">Book a Table</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Slideshow Section -->
+        <section id="hero" class="relative h-[90vh] w-full overflow-hidden text-white">
+            <!-- Slide 1: Kebab Platter -->
+            <div class="hero-slide active" id="slide1">
+                <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+                <img src="https://images.unsplash.com/photo-1628294770483-500b6b24553f?q=80&w=2070" onerror="this.onerror=null;this.src='https://placehold.co/1920x1080/333/fff?text=Sizzling+Kebab+Platter';" alt="A vibrant, close-up shot of a sizzling kebab platter at Mangal Turkish Restaurant" class="w-full h-full object-cover">
+                <div class="absolute inset-0 flex flex-col justify-center items-center text-center p-4">
+                    <h1 class="text-5xl md:text-7xl font-bold mb-4" style="text-shadow: 2px 2px 8px rgba(0,0,0,0.7);" data-translate-key="hero1_title">A True Taste of Turkey</h1>
+                    <p class="text-xl md:text-2xl mb-8" style="text-shadow: 1px 1px 4px rgba(0,0,0,0.7);" data-translate-key="hero1_subtitle">Crafted with passion, served with pride.</p>
+                    <a href="#menu" class="cta-button bg-red-700 text-white px-8 py-4 rounded-full text-lg font-bold shadow-xl hover:bg-red-800 animate-pulse" data-translate-key="hero1_cta">Savor Our Tradition</a>
+                </div>
+            </div>
+            <!-- Slide 2: Turkish Monument -->
+            <div class="hero-slide" id="slide2">
+                <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+                <img src="https://images.unsplash.com/photo-1567880903339-e4a8a6889a26?q=80&w=1932" 
+                     onerror="this.onerror=null;this.src='https://placehold.co/1920x1080/555/fff?text=Iconic+Turkish+Heritage';"
+                     alt="The stunning Blue Mosque in Istanbul, representing Turkish heritage." class="w-full h-full object-cover">
+                <div class="absolute inset-0 flex flex-col justify-center items-center text-center p-4">
+                    <h1 class="text-5xl md:text-7xl font-bold mb-4" style="text-shadow: 2px 2px 8px rgba(0,0,0,0.7);" data-translate-key="hero2_title">Iconic Heritage, Unforgettable Flavors</h1>
+                    <p class="text-xl md:text-2xl mb-8" style="text-shadow: 1px 1px 4px rgba(0,0,0,0.7);" data-translate-key="hero2_subtitle">Inspired by the beauty of Turkish architecture.</p>
+                    <a href="#story" class="cta-button bg-amber-500 text-white px-8 py-4 rounded-full text-lg font-bold shadow-xl hover:bg-amber-600" data-translate-key="hero2_cta">Explore Our Culture</a>
+                </div>
+            </div>
+            <!-- Slide 3: Happy Diners -->
+            <div class="hero-slide" id="slide3">
+                <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+                <img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?q=80&w=2070" onerror="this.onerror=null;this.src='https://placehold.co/1920x1080/444/fff?text=Happy+Diners';" alt="A group of friends happily dining and sharing a meal at Mangal Turkish Restaurant" class="w-full h-full object-cover">
+                <div class="absolute inset-0 flex flex-col justify-center items-center text-center p-4">
+                    <h1 class="text-5xl md:text-7xl font-bold mb-4" style="text-shadow: 2px 2px 8px rgba(0,0,0,0.7);" data-translate-key="hero3_title">Create Memories Together</h1>
+                    <p class="text-xl md:text-2xl mb-8" style="text-shadow: 1px 1px 4px rgba(0,0,0,0.7);" data-translate-key="hero3_subtitle">Every meal is a celebration.</p>
+                    <a href="tel:+97440020919" class="cta-button bg-green-600 text-white px-8 py-4 rounded-full text-lg font-bold shadow-xl hover:bg-green-700" data-translate-key="hero3_cta">Book Your Table</a>
+                </div>
+            </div>
+            <!-- Slideshow Controls -->
+            <div class="absolute bottom-5 left-1/2 -translate-x-1/2 flex space-x-3">
+                <button class="slide-dot active" onclick="currentSlide(1)"></button>
+                <button class="slide-dot" onclick="currentSlide(2)"></button>
+                <button class="slide-dot" onclick="currentSlide(3)"></button>
+            </div>
+        </section>
+
+        <!-- Our Story Section -->
+        <section id="story" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12 fade-in-section">
+                    <h2 class="text-4xl md:text-5xl font-bold text-red-800" data-translate-key="story_title">Our Story</h2>
+                    <p class="text-lg text-gray-600 mt-4 max-w-3xl mx-auto" data-translate-key="story_subtitle">From the heart of Turkey to the vibrant community of Al Wukair</p>
+                </div>
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="fade-in-section">
+                        <img src="https://images.unsplash.com/photo-1583325928511-b54144365851?q=80&w=1887" onerror="this.onerror=null;this.src='https://placehold.co/600x400/8B4513/fff?text=Turkish+Spice+Market';" alt="A vibrant, bustling Turkish spice market representing authentic flavors." class="rounded-lg shadow-2xl w-full h-auto object-cover">
+                    </div>
+                    <div class="fade-in-section">
+                        <h3 class="text-3xl font-bold mb-4 text-gray-800" data-translate-key="story_heading">A Journey of Flavor</h3>
+                        <p class="text-gray-600 mb-4 leading-relaxed" data-translate-key="story_p1">
+                            Mangal was born from a dream: to share the rich, authentic flavors of our homeland with the world. Our journey began in the bustling markets and family kitchens of Turkey, where recipes are passed down through generations. Each dish we prepare is a tribute to this heritage.
+                        </p>
+                        <p class="text-gray-600 leading-relaxed" data-translate-key="story_p2">
+                            We bring the soul of Turkish cuisine to Al Wukair, Qatar, using time-honored cooking methods and the freshest ingredients. At Mangal, you're not just a customer; you're our guest. Welcome to our family.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Special Offers Section -->
+        <section id="special-offers" class="py-20 bg-amber-50">
+            <div class="container mx-auto px-6">
+                 <div class="text-center mb-12 fade-in-section">
+                    <h2 class="text-4xl md:text-5xl font-bold text-amber-800" data-translate-key="offer_title">Today's Special</h2>
+                </div>
+                <div class="grid md:grid-cols-2 gap-8 items-center bg-white rounded-lg shadow-xl p-8">
+                    <div class="fade-in-section">
+                        <img src="https://images.unsplash.com/photo-1626078302344-a954a726886e?q=80&w=1887" 
+                             onerror="this.onerror=null;this.src='https://placehold.co/600x400/D2691E/fff?text=Lunch+Deal';"
+                             alt="An appetizing business lunch special with kebab and sides." class="rounded-lg shadow-md w-full h-auto object-cover">
+                    </div>
+                    <div class="fade-in-section">
+                        <h3 class="text-3xl font-bold mb-4 text-gray-800" data-translate-key="offer_heading">Business Lunch Deal</h3>
+                        <p class="text-gray-600 mb-4 leading-relaxed" data-translate-key="offer_desc">
+                            Enjoy your choice of our signature kebabs, served with fresh salad, bulgur rice, and a complimentary soft drink. The perfect midday meal to fuel your afternoon.
+                        </p>
+                        <p class="text-3xl font-bold text-amber-600 mb-6">QAR 55</p>
+                         <a href="tel:+97440020919" class="cta-button inline-block bg-red-700 text-white px-8 py-3 rounded-full text-lg font-bold shadow-lg hover:bg-red-800" data-translate-key="offer_cta">Call to Order</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Online Ordering Section -->
+        <section id="order" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                 <div class="text-center mb-12 fade-in-section">
+                    <h2 class="text-4xl md:text-5xl font-bold text-red-800" data-translate-key="order_title">Order For Pickup</h2>
+                    <p class="text-lg text-gray-600 mt-4" data-translate-key="order_subtitle">Enjoy your Mangal favorites at home. Browse our categories and call us to place your order.</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+                     <div class="fade-in-section">
+                         <div class="p-6 bg-gray-50 rounded-lg shadow-md">
+                            <i class="fas fa-utensils text-4xl text-amber-600 mb-4"></i>
+                            <h3 class="text-2xl font-bold font-display text-gray-800" data-translate-key="order_cat1">Mezzes</h3>
+                         </div>
+                    </div>
+                    <div class="fade-in-section">
+                         <div class="p-6 bg-gray-50 rounded-lg shadow-md">
+                            <i class="fas fa-pepper-hot text-4xl text-red-700 mb-4"></i>
+                            <h3 class="text-2xl font-bold font-display text-gray-800" data-translate-key="order_cat2">Kebabs</h3>
+                         </div>
+                    </div>
+                     <div class="fade-in-section">
+                         <div class="p-6 bg-gray-50 rounded-lg shadow-md">
+                            <i class="fas fa-bread-slice text-4xl text-amber-700 mb-4"></i>
+                            <h3 class="text-2xl font-bold font-display text-gray-800" data-translate-key="order_cat3">Pides</h3>
+                         </div>
+                    </div>
+                     <div class="fade-in-section">
+                         <div class="p-6 bg-gray-50 rounded-lg shadow-md">
+                            <i class="fas fa-ice-cream text-4xl text-red-500 mb-4"></i>
+                            <h3 class="text-2xl font-bold font-display text-gray-800" data-translate-key="order_cat4">Desserts</h3>
+                         </div>
+                    </div>
+                </div>
+                <div class="text-center mt-12">
+                     <a href="tel:+97440020919" class="cta-button inline-block bg-green-600 text-white px-10 py-4 rounded-full text-xl font-bold shadow-xl hover:bg-green-700">
+                        <i class="fas fa-phone-alt mr-2"></i> <span data-translate-key="order_call_cta">Place Your Order Now</span>
+                     </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Menu Section -->
+        <section id="menu" class="py-20 turkish-pattern">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12 fade-in-section">
+                    <h2 class="text-4xl md:text-5xl font-bold text-red-800" data-translate-key="menu_title">Our Signature Dishes</h2>
+                    <p class="text-lg text-gray-700 mt-4" data-translate-key="menu_subtitle">A symphony of flavors, grilled to perfection.</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Menu Item 1: Adana Kebab -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300 fade-in-section">
+                        <img src="https://images.unsplash.com/photo-1599974492415-e5192135da43?q=80&w=1887" onerror="this.onerror=null;this.src='https://placehold.co/400x300/a0522d/fff?text=Adana+Kebab';" alt="Juicy and spicy Adana Kebab served with fresh garnishes." class="w-full h-56 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold mb-2 text-gray-800 font-display" data-translate-key="menu1_name">Adana Kebab</h3>
+                            <p class="text-gray-600 mb-4" data-translate-key="menu1_desc">Spicy minced lamb grilled on a skewer, served with bulgur rice and grilled vegetables.</p>
+                            <p class="text-2xl font-bold text-red-700">QAR 65</p>
+                        </div>
+                    </div>
+                    <!-- Menu Item 2: Mixed Meze Platter -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300 fade-in-section" style="transition-delay: 100ms;">
+                        <img src="https://images.unsplash.com/photo-1625944239103-0404a4387a26?q=80&w=1887" onerror="this.onerror=null;this.src='https://placehold.co/400x300/228B22/fff?text=Meze+Platter';" alt="A colorful and fresh mixed meze platter with various dips and salads." class="w-full h-56 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold mb-2 text-gray-800 font-display" data-translate-key="menu2_name">Mixed Meze Platter</h3>
+                            <p class="text-gray-600 mb-4" data-translate-key="menu2_desc">A delightful selection of our finest cold appetizers, including hummus, baba ghanoush, and more.</p>
+                            <p class="text-2xl font-bold text-red-700">QAR 45</p>
+                        </div>
+                    </div>
+                    <!-- Menu Item 3: Baklava -->
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300 fade-in-section" style="transition-delay: 200ms;">
+                        <img src="https://images.unsplash.com/photo-1582235882399-55664188147d?q=80&w=1887" onerror="this.onerror=null;this.src='https://placehold.co/400x300/DAA520/fff?text=Baklava';" alt="Layers of sweet baklava with pistachios, a traditional Turkish dessert." class="w-full h-56 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold mb-2 text-gray-800 font-display" data-translate-key="menu3_name">Classic Baklava</h3>
+                            <p class="text-gray-600 mb-4" data-translate-key="menu3_desc">Layers of flaky phyllo dough, filled with chopped pistachios and sweetened with honey syrup.</p>
+                            <p class="text-2xl font-bold text-red-700">QAR 30</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+         <!-- Mangal Moments Gallery -->
+        <section id="gallery" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12 fade-in-section">
+                    <h2 class="text-4xl md:text-5xl font-bold text-red-800" data-translate-key="gallery_title">Mangal Moments</h2>
+                    <p class="text-lg text-gray-600 mt-4 max-w-2xl mx-auto" data-translate-key="gallery_subtitle">See the smiles we share every day.</p>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="grid gap-4">
+                        <div class="fade-in-section"><img class="h-auto max-w-full rounded-lg shadow-lg" src="https://images.unsplash.com/photo-1579734096245-3e2a22512613?q=80&w=1887" alt="Customers enjoying a meal"></div>
+                        <div class="fade-in-section"><img class="h-auto max-w-full rounded-lg shadow-lg" src="https://images.unsplash.com/photo-1561339429-470183864a78?q=80&w=1887" alt="A family dining together"></div>
+                    </div>
+                    <div class="grid gap-4">
+                        <div class="fade-in-section"><img class="h-auto max-w-full rounded-lg shadow-lg" src="https://images.unsplash.com/photo-1592861956120-e524fc739696?q=80&w=2070" alt="A couple on a dinner date"></div>
+                        <div class="fade-in-section"><img class="h-auto max-w-full rounded-lg shadow-lg" src="https://images.unsplash.com/photo-1571277258889-b681c1b1df66?q=80&w=1887" alt="Friends laughing at a restaurant table"></div>
+                    </div>
+                     <div class="grid gap-4">
+                        <div class="fade-in-section"><img class="h-auto max-w-full rounded-lg shadow-lg" src="https://images.unsplash.com/photo-1574786198875-4955a2ed924e?q=80&w=2070" alt="A group sharing food"></div>
+                        <div class="fade-in-section"><img class="h-auto max-w-full rounded-lg shadow-lg" src="https://images.unsplash.com/photo-1579870119176-f34a1a5b67a5?q=80&w=1887" alt="Close up of a shared platter"></div>
+                    </div>
+                     <div class="grid gap-4">
+                        <div class="fade-in-section"><img class="h-auto max-w-full rounded-lg shadow-lg" src="https://images.unsplash.com/photo-1621852003714-b52a42e51924?q=80&w=1887" alt="A person pouring Turkish tea"></div>
+                        <div class="fade-in-section"><img class="h-auto max-w-full rounded-lg shadow-lg" src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=2047" alt="A cozy restaurant corner"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Contact & Footer Section -->
+        <footer id="contact" class="bg-gray-800 text-white py-16">
+            <div class="container mx-auto px-6">
+                 <div class="text-center">
+                    <h2 class="text-4xl font-bold mb-4 font-display text-amber-400" data-translate-key="footer_title">Visit & Contact Mangal</h2>
+                    <p class="text-gray-300 mb-10 max-w-2xl mx-auto" data-translate-key="footer_subtitle">We are open daily to welcome you for an unforgettable dining experience.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8 lg:gap-12 items-center mb-12">
+                    <!-- Left side with contact details -->
+                    <div class="space-y-8">
+                        <!-- Location -->
+                        <div class="fade-in-section flex items-start space-x-4">
+                            <i class="fas fa-map-marker-alt text-3xl text-red-500 mt-1 flex-shrink-0"></i>
+                            <div>
+                                <h3 class="text-xl font-bold" data-translate-key="footer_location_title">Our Location</h3>
+                                <p class="text-gray-400" data-translate-key="footer_location_text">Al Wukair, Qatar</p>
+                            </div>
+                        </div>
+                        <!-- Opening Hours -->
+                        <div class="fade-in-section flex items-start space-x-4">
+                            <i class="fas fa-clock text-3xl text-red-500 mt-1 flex-shrink-0"></i>
+                            <div>
+                                <h3 class="text-xl font-bold" data-translate-key="footer_hours_title">Opening Hours</h3>
+                                <p class="text-gray-400" data-translate-key="footer_hours_text">9:00 AM - 2:00 AM, Daily</p>
+                            </div>
+                        </div>
+                        <!-- Contact Info -->
+                        <div class="fade-in-section flex items-start space-x-4">
+                            <i class="fas fa-phone-volume text-3xl text-red-500 mt-1 flex-shrink-0"></i>
+                            <div>
+                                <h3 class="text-xl font-bold" data-translate-key="footer_contact_title">Reservations & Inquiries</h3>
+                                <p class="text-gray-400">
+                                    <span data-translate-key="footer_phone">Phone</span>: <a href="tel:+97440020919" class="hover:text-red-400">+974 4002 0919</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                     <!-- Right side with map -->
+                    <div class="fade-in-section w-full h-full min-h-[320px]">
+                       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7222.431393009954!2d51.508138577709964!3d25.162193699999992!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e45cdab10b719cf%3A0x6377749f1db995d8!2zTWFuZ2FsIFR1cmtpc2ggUmVzdGF1cmFudCAtINmF2YbYutmEINmF2LfYudmFINiq2LHZg9mK!5e0!3m2!1sen!2sqa!4v1749581994257!5m2!1sen!2sqa" class="w-full h-full rounded-lg shadow-lg" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+               
+                <!-- Loyalty Club -->
+                <div class="border-t border-gray-700 pt-10 mt-10">
+                    <div class="text-center fade-in-section">
+                        <h3 class="text-2xl font-bold mb-3 text-amber-400" data-translate-key="loyalty_title">Join Our Club</h3>
+                        <p class="text-gray-300 mb-6" data-translate-key="loyalty_subtitle">Get a free Turkish tea on your next visit and receive exclusive offers!</p>
+                        <form onsubmit="event.preventDefault(); alert('Thank you for joining!');" class="max-w-md mx-auto">
+                            <div class="flex items-center">
+                                <input type="email" required placeholder="Your email address" data-translate-key="loyalty_placeholder" class="w-full px-4 py-3 rounded-l-md text-gray-800 focus:outline-none">
+                                <button type="submit" class="bg-red-700 text-white px-6 py-3 rounded-r-md font-bold hover:bg-red-800" data-translate-key="loyalty_cta">Join</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="border-t border-gray-700 pt-6 mt-12 text-center">
+                    <p class="text-gray-500" data-translate-key="footer_copyright">&copy; 2024 Mangal Turkish Restaurant. All Rights Reserved.</p>
+                </div>
+            </div>
+        </footer>
+
+    </main>
+    
+    <script>
+        // --- TRANSLATION DATA ---
+        const translations = {
+            en: {
+                nav_home: "Home", nav_story: "Our Story", nav_menu: "Menu", nav_contact: "Contact", nav_language: "Language", nav_order: "Order Online", nav_book: "Book a Table",
+                hero1_title: "A True Taste of Turkey", hero1_subtitle: "Crafted with passion, served with pride.", hero1_cta: "Savor Our Tradition",
+                hero2_title: "Iconic Heritage, Unforgettable Flavors", hero2_subtitle: "Inspired by the beauty of Turkish architecture.", hero2_cta: "Explore Our Culture",
+                hero3_title: "Create Memories Together", hero3_subtitle: "Every meal is a celebration.", hero3_cta: "Book Your Table",
+                story_title: "Our Story", story_subtitle: "From the heart of Turkey to the vibrant community of Al Wukair", story_heading: "A Journey of Flavor",
+                story_p1: "Mangal was born from a dream: to share the rich, authentic flavors of our homeland with the world. Our journey began in the bustling markets and family kitchens of Turkey, where recipes are passed down through generations. Each dish we prepare is a tribute to this heritage.",
+                story_p2: "We bring the soul of Turkish cuisine to Al Wukair, Qatar, using time-honored cooking methods and the freshest ingredients. At Mangal, you're not just a customer; you're our guest. Welcome to our family.",
+                offer_title: "Today's Special", offer_heading: "Business Lunch Deal", offer_desc: "Enjoy your choice of our signature kebabs, served with fresh salad, bulgur rice, and a complimentary soft drink. The perfect midday meal to fuel your afternoon.", offer_cta: "Call to Order",
+                order_title: "Order For Pickup", order_subtitle: "Enjoy your Mangal favorites at home. Browse our categories and call us to place your order.", order_cat1: "Mezzes", order_cat2: "Kebabs", order_cat3: "Pides", order_cat4: "Desserts", order_call_cta: "Place Your Order Now",
+                menu_title: "Our Signature Dishes", menu_subtitle: "A symphony of flavors, grilled to perfection.",
+                menu1_name: "Adana Kebab", menu1_desc: "Spicy minced lamb grilled on a skewer, served with bulgur rice and grilled vegetables.",
+                menu2_name: "Mixed Meze Platter", menu2_desc: "A delightful selection of our finest cold appetizers, including hummus, baba ghanoush, and more.",
+                menu3_name: "Classic Baklava", menu3_desc: "Layers of flaky phyllo dough, filled with chopped pistachios and sweetened with honey syrup.",
+                gallery_title: "Mangal Moments", gallery_subtitle: "See the smiles we share every day.",
+                footer_title: "Visit & Contact Mangal", footer_subtitle: "We are open daily to welcome you for an unforgettable dining experience.",
+                footer_location_title: "Our Location", footer_location_text: "Al Wukair, Qatar",
+                footer_hours_title: "Opening Hours", footer_hours_text: "9:00 AM - 2:00 AM, Daily",
+                footer_contact_title: "Reservations & Inquiries", footer_phone: "Phone",
+                loyalty_title: "Join Our Club", loyalty_subtitle: "Get a free Turkish tea on your next visit and receive exclusive offers!", loyalty_placeholder: "Your email address", loyalty_cta: "Join",
+                footer_copyright: "© 2024 Mangal Turkish Restaurant. All Rights Reserved."
+            },
+            ar: {
+                nav_home: "الرئيسية", nav_story: "قصتنا", nav_menu: "قائمة الطعام", nav_contact: "اتصل بنا", nav_language: "اللغة", nav_order: "اطلب الآن", nav_book: "احجز طاولة",
+                hero1_title: "مذاق تركيا الأصيل", hero1_subtitle: "مصنوع بشغف، ومقدم بفخر.", hero1_cta: "تذوق تقاليدنا",
+                hero2_title: "تراث عريق، نكهات لا تنسى", hero2_subtitle: "مستوحاة من جمال العمارة التركية.", hero2_cta: "اكتشف ثقافتنا",
+                hero3_title: "اصنعوا الذكريات معًا", hero3_subtitle: "كل وجبة هي احتفال.", hero3_cta: "احجز طاولتك",
+                story_title: "قصتنا", story_subtitle: "من قلب تركيا إلى مجتمع الوكير النابض بالحياة", story_heading: "رحلة النكهات",
+                story_p1: "وُلد مطعم منقل من حلم: مشاركة النكهات الغنية والأصيلة لوطننا مع العالم. بدأت رحلتنا في الأسواق الصاخبة والمطابخ العائلية في تركيا، حيث تنتقل الوصفات عبر الأجيال. كل طبق نعده هو تكريم لهذا التراث.",
+                story_p2: "نحن نقدم روح المطبخ التركي في الوكير، قطر، باستخدام طرق الطهي العريقة وأجود المكونات. في منقل، أنت لست مجرد زبون؛ أنت ضيفنا. أهلاً بك في عائلتنا.",
+                offer_title: "عرض اليوم الخاص", offer_heading: "وجبة غداء عمل", offer_desc: "استمتع باختيارك من الكباب المميز لدينا، يقدم مع سلطة طازجة، أرز برغل، ومشروب غازي مجاني. الوجبة المثالية لمنتصف اليوم لتزويدك بالطاقة.", offer_cta: "اتصل للطلب",
+                order_title: "اطلب للاستلام", order_subtitle: "استمتع بأطباق منقل المفضلة في منزلك. تصفح فئاتنا واتصل بنا لتقديم طلبك.", order_cat1: "مقبلات", order_cat2: "كباب", order_cat3: "فطائر", order_cat4: "حلويات", order_call_cta: "قدم طلبك الآن",
+                menu_title: "أطباقنا المميزة", menu_subtitle: "سيمفونية من النكهات، مشوية بإتقان.",
+                menu1_name: "أضنة كباب", menu1_desc: "لحم ضأن مفروم متبل مشوي على سيخ، يقدم مع البرغل والخضروات المشوية.",
+                menu2_name: "طبق مزات مشكلة", menu2_desc: "تشكيلة رائعة من أفضل المقبلات الباردة لدينا، بما في ذلك الحمص والبابا غنوج والمزيد.",
+                menu3_name: "بقلاوة كلاسيكية", menu3_desc: "طبقات من عجينة الفيلو الهشة، محشوة بالفستق المفروم ومحلاة بشراب العسل.",
+                gallery_title: "لحظات منقل", gallery_subtitle: "شاهد الابتسامات التي نشاركها كل يوم.",
+                footer_title: "زوروا واتصلوا بمنقل", footer_subtitle: "نحن نفتح أبوابنا يومياً للترحيب بكم لتجربة طعام لا تُنسى.",
+                footer_location_title: "موقعنا", footer_location_text: "الوكرة، قطر",
+                footer_hours_title: "ساعات العمل", footer_hours_text: "9:00 صباحًا - 2:00 صباحًا، يوميًا",
+                footer_contact_title: "الحجوزات والاستفسارات", footer_phone: "هاتف",
+                loyalty_title: "انضم إلى نادينا", loyalty_subtitle: "احصل على شاي تركي مجاني في زيارتك القادمة واستقبل عروضًا حصرية!", loyalty_placeholder: "عنوان بريدك الإلكتروني", loyalty_cta: "انضم",
+                footer_copyright: "© 2024 مطعم منقل التركي. جميع الحقوق محفوظة."
+            },
+            tr: {
+                nav_home: "Ana Sayfa", nav_story: "Hikayemiz", nav_menu: "Menü", nav_contact: "İletişim", nav_language: "Dil", nav_order: "Online Sipariş", nav_book: "Masa Ayırt",
+                hero1_title: "Gerçek Türkiye Lezzeti", hero1_subtitle: "Tutkuyla hazırlandı, gururla sunuldu.", hero1_cta: "Geleneklerimizi Tadın",
+                hero2_title: "İkonik Miras, Unutulmaz Lezzetler", hero2_subtitle: "Türk mimarisinin güzelliğinden ilham alındı.", hero2_cta: "Kültürümüzü Keşfedin",
+                hero3_title: "Birlikte Anılar Yaratın", hero3_subtitle: "Her yemek bir kutlamadır.", hero3_cta: "Masanızı Ayırtın",
+                story_title: "Hikayemiz", story_subtitle: "Türkiye'nin kalbinden Al Wukair'in canlı toplumuna", story_heading: "Bir Lezzet Yolculuğu",
+                story_p1: "Mangal bir hayalden doğdu: vatanımızın zengin, otantik lezzetlerini dünyayla paylaşmak. Yolculuğumuz, tariflerin nesiller boyu aktarıldığı Türkiye'nin hareketli pazarlarında ve aile mutfaklarında başladı. Hazırladığımız her yemek bu mirasa bir övgüdür.",
+                story_p2: "Geleneksel pişirme yöntemlerini ve en taze malzemeleri kullanarak Türk mutfağının ruhunu Katar'ın Al Wukair şehrine getiriyoruz. Mangal'da sadece bir müşteri değil, misafirimizsiniz. Ailemize hoş geldiniz.",
+                offer_title: "Günün Özel Teklifi", offer_heading: "İş Öğle Yemeği Fırsatı", offer_desc: "İmza kebaplarımızdan birini seçin, yanında taze salata, bulgur pilavı ve ücretsiz bir meşrubat ile servis edilir. Öğleden sonranıza enerji katacak mükemmel bir öğle yemeği.", offer_cta: "Sipariş İçin Arayın",
+                order_title: "Gel Al Sipariş Ver", order_subtitle: "Mangal favorilerinizin tadını evinizde çıkarın. Kategorilerimize göz atın ve sipariş vermek için bizi arayın.", order_cat1: "Mezeler", order_cat2: "Kebaplar", order_cat3: "Pideler", order_cat4: "Tatlılar", order_call_cta: "Şimdi Sipariş Ver",
+                menu_title: "İmza Yemeklerimiz", menu_subtitle: "Mükemmel şekilde ızgara yapılmış bir lezzet senfonisi.",
+                menu1_name: "Adana Kebap", menu1_desc: "Baharatlı kıyma şişte ızgara, bulgur pilavı ve ızgara sebzelerle servis edilir.",
+                menu2_name: "Karışık Meze Tabağı", menu2_desc: "Humus, babagannuş ve daha fazlasını içeren en iyi soğuk mezelerimizden oluşan enfes bir seçki.",
+                menu3_name: "Klasik Baklava", menu3_desc: "İnce yufka katmanları, doğranmış fıstıkla doldurulmuş ve bal şerbetiyle tatlandırılmıştır.",
+                gallery_title: "Mangal Anları", gallery_subtitle: "Her gün paylaştığımız gülümsemeleri görün.",
+                footer_title: "Ziyaret Edin ve İletişime Geçin", footer_subtitle: "Unutulmaz bir yemek deneyimi için sizi her gün ağırlıyoruz.",
+                footer_location_title: "Konumumuz", footer_location_text: "Al Wukair, Katar",
+                footer_hours_title: "Çalışma Saatleri", footer_hours_text: "Her gün 09:00 - 02:00",
+                footer_contact_title: "Rezervasyon ve Sorular", footer_phone: "Telefon",
+                loyalty_title: "Kulübümüze Katılın", loyalty_subtitle: "Bir sonraki ziyaretinizde ücretsiz bir Türk çayı kazanın ve özel teklifler alın!", loyalty_placeholder: "E-posta adresiniz", loyalty_cta: "Katıl",
+                footer_copyright: "© 2024 Mangal Türk Restoranı. Tüm Hakları Saklıdır."
+            }
+        };
+
+        // --- LANGUAGE SWITCHER LOGIC ---
+        function changeLanguage(lang) {
+            if (!translations[lang]) return;
+
+            document.documentElement.lang = lang;
+            
+            // Add or remove class for Arabic font styling
+            if (lang === 'ar') {
+                document.body.classList.add('lang-ar');
+            } else {
+                document.body.classList.remove('lang-ar');
+            }
+
+            // Update all text content
+            document.querySelectorAll('[data-translate-key]').forEach(el => {
+                const key = el.getAttribute('data-translate-key');
+                 if (el.tagName === 'INPUT' && el.hasAttribute('placeholder')) {
+                    el.placeholder = translations[lang][key];
+                } else if (translations[lang][key]) {
+                    el.textContent = translations[lang][key];
+                }
+            });
+
+            // Update language switcher display
+            const langUpper = lang.toUpperCase();
+            document.getElementById('current-lang-desktop').textContent = langUpper;
+            document.getElementById('current-lang-mobile').textContent = langUpper;
+            
+            // Close dropdowns after selection
+            document.getElementById('language-dropdown-desktop').classList.add('hidden');
+            document.getElementById('language-dropdown-mobile').classList.add('hidden');
+        }
+
+        // --- HERO SLIDESHOW LOGIC ---
+        let slideIndex = 1;
+        let slideInterval;
+
+        function showSlides() {
+            let slides = document.getElementsByClassName("hero-slide");
+            let dots = document.getElementsByClassName("slide-dot");
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.opacity = "0";
+                slides[i].classList.remove("active");
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) {slideIndex = 1}
+            for (let i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex-1].classList.add("active");
+            slides[slideIndex-1].style.opacity = "1";
+            dots[slideIndex-1].className += " active";
+            slideInterval = setTimeout(showSlides, 5000);
+        }
+
+        function currentSlide(n) {
+            clearTimeout(slideInterval);
+            slideIndex = n - 1;
+            showSlides();
+        }
+
+        // --- ON DOCUMENT LOAD ---
+        document.addEventListener("DOMContentLoaded", function() {
+            // Slideshow Init
+            showSlides();
+
+            // Language Switcher Dropdown Toggle Logic
+            const setupSwitcher = (switcherId, dropdownId) => {
+                const switcher = document.getElementById(switcherId);
+                const dropdown = document.getElementById(dropdownId);
+                switcher.addEventListener('click', (event) => {
+                    event.stopPropagation();
+                    dropdown.classList.toggle('hidden');
+                });
+            };
+            setupSwitcher('language-switcher-desktop', 'language-dropdown-desktop');
+            setupSwitcher('language-switcher-mobile', 'language-dropdown-mobile');
+
+            // Close dropdowns when clicking outside
+            document.addEventListener('click', () => {
+                document.getElementById('language-dropdown-desktop').classList.add('hidden');
+                document.getElementById('language-dropdown-mobile').classList.add('hidden');
+            });
+            
+            // Set initial language to English
+            changeLanguage('en');
+
+            // Mobile Menu Toggle
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            // Hide mobile menu when a navigation link is clicked
+            document.querySelectorAll('#mobile-menu a[href^="#"]').forEach(link => {
+                link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+            });
+
+            // Scroll Animation Observer
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.fade-in-section').forEach(section => {
+                observer.observe(section);
+            });
+        });
+
+        // Add styles for slide dots via JS
+        const style = document.createElement('style');
+        style.innerHTML = `
+            .slide-dot { cursor: pointer; height: 12px; width: 12px; margin: 0 4px; background-color: rgba(255, 255, 255, 0.5); border-radius: 50%; display: inline-block; transition: background-color 0.6s ease; }
+            .slide-dot.active, .slide-dot:hover { background-color: #ffffff; }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
